@@ -279,9 +279,7 @@
             });
             editor.onDidChangeModelContent(() => { files[currentLang] = editor.getValue(); updatePreview(); });
             setTimeout(updatePreview, 500);
-            
-            // Inicia no modo celular
-            setPreview('mobile');
+            setPreview('desktop');
         });
 
         function switchTab(lang) {
