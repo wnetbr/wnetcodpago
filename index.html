@@ -147,31 +147,30 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
         }
         .auth-input:focus { border-color: var(--accent); ring: 2px var(--accent); }
 
-        /* ESTILO DO BANNER DE VENDA (Fiel ao seu design) */
-        #paywall-overlay {
+        /* NOVO: CSS do Paywall sem afetar o layout principal */
+        #pay-banner {
             position: fixed;
             inset: 0;
-            z-index: 10001;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(15px);
+            z-index: 10000;
             display: none;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s;
         }
     </style>
 </head>
 <body class="flex flex-col">
 
-    <div id="paywall-overlay">
-        <div class="apple-glass p-10 rounded-[35px] border border-gray-200 text-center max-w-sm shadow-2xl">
-            <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg">
+    <div id="pay-banner">
+        <div class="apple-glass p-10 rounded-[40px] border border-gray-200 text-center max-w-xs shadow-2xl">
+            <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                 <svg width="32" height="32" viewBox="0 0 256 256" fill="white"><path d="M224,128v80a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V128a16,16,0,0,1,16-16H80a8,8,0,0,1,0,16H48v80H208V128H176a8,8,0,0,1,0-16h32A16,16,0,0,1,224,128ZM122.34,34.34a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,11.32,11.32L112,56.63V160a8,8,0,0,0,16,0V56.63l29.66,29.03a8,8,0,0,0,11.32-11.32Z"></path></svg>
             </div>
-            <h2 class="text-xl font-bold text-black">Exportação Bloqueada</h2>
-            <p class="text-gray-500 text-xs mt-3 mb-8">Para baixar seu arquivo .html, adquira a versão premium do <b>wnet</b>.</p>
-            <button onclick="window.open('https://seulink.com', '_blank')" class="w-full py-3 btn-primary-apple font-semibold">Comprar Agora</button>
-            <button onclick="document.getElementById('paywall-overlay').style.display='none'" class="w-full py-3 mt-2 text-xs text-gray-400 hover:text-black transition-all">Voltar para o editor</button>
+            <h2 class="text-xl font-bold text-black">Acesso Premium</h2>
+            <p class="text-gray-500 text-xs mt-2 mb-8">A exportação de arquivos é exclusiva para usuários Pro.</p>
+            <button onclick="window.open('https://wnet.link/comprar', '_blank')" class="w-full py-3 btn-primary-apple font-semibold">Desbloquear Versão Paga</button>
+            <button onclick="document.getElementById('pay-banner').style.display='none'" class="w-full py-3 text-xs text-gray-400">Voltar para o editor</button>
         </div>
     </div>
 
@@ -290,7 +289,7 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             editor = monaco.editor.create(document.getElementById('editor-container'), {
                 value: files[currentLang],
                 language: 'html',
-                theme: 'vs', // Tema claro para o estilo Apple
+                theme: 'vs',
                 automaticLayout: true,
                 fontSize: 14,
                 fontFamily: 'JetBrains Mono',
@@ -355,9 +354,9 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             reader.readAsText(event.target.files[0]);
         }
 
-        // FUNÇÃO DE EXPORTAR ALTERADA PARA MOSTRAR O BANNER
+        // ALTERAÇÃO APENAS AQUI: TRAVA DE DOWNLOAD
         async function downloadBundle() {
-            document.getElementById('paywall-overlay').style.display = 'flex';
+            document.getElementById('pay-banner').style.display = 'flex';
         }
     </script>
 </body>
