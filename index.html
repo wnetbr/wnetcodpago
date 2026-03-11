@@ -139,16 +139,6 @@
             align-items: center;
             justify-content: center;
         }
-
-        /* AJUSTES DE RESPONSIVIDADE (MOBILE/TABLET) */
-        @media (max-width: 1024px) {
-            body { overflow: auto; height: auto; }
-            header { flex-direction: column; height: auto; padding: 15px; gap: 15px; }
-            header div { flex-wrap: wrap; justify-content: center; }
-            main { flex-direction: column; height: auto; overflow: visible; padding: 10px; }
-            section { width: 100% !important; height: 450px !important; }
-            .header-right { width: 100%; justify-content: center; overflow-x: auto; padding-bottom: 5px; }
-        }
     </style>
 </head>
 <body class="flex flex-col">
@@ -194,7 +184,7 @@
                 <button onclick="switchTab('javascript')" id="tab-js" class="tab-btn uppercase tracking-wider">JS</button>
             </nav>
         </div>
-        <div class="flex items-center gap-3 header-right">
+        <div class="flex items-center gap-3">
             <button onclick="selectAllCode()" class="text-xs font-medium px-4 py-2 btn-apple">Selecionar</button>
             <button onclick="clearAll()" class="text-xs font-medium px-4 py-2 text-red-500 hover:bg-red-50 rounded-lg transition-all">Limpar</button>
             <button onclick="importFile()" class="text-xs font-medium px-4 py-2 btn-apple">Importar</button>
@@ -289,7 +279,9 @@
             });
             editor.onDidChangeModelContent(() => { files[currentLang] = editor.getValue(); updatePreview(); });
             setTimeout(updatePreview, 500);
-            setPreview('desktop');
+            
+            // Inicia no modo celular
+            setPreview('mobile');
         });
 
         function switchTab(lang) {
