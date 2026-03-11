@@ -1,7 +1,4 @@
-<!DOCTYPE html><html><head><style>body { background: #fff; color: #1d1d1f; height: 100vh; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; margin: 0; }
-.container { text-align: center; border: 1px solid #d2d2d7; padding: 3rem; border-radius: 30px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-button { background: #007aff; color: #fff; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 500; cursor: pointer; margin-top: 20px; transition: 0.2s; }
-button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +12,7 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
         :root {
             --bg: #f5f5f7;
             --panel: rgba(255, 255, 255, 0.7);
-            --accent: #007aff; /* Apple Blue */
+            --accent: #007aff; 
             --border: rgba(0, 0, 0, 0.1);
             --text-primary: #1d1d1f;
             --text-secondary: #86868b;
@@ -31,7 +28,6 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Efeito Frosted Glass Apple */
         .apple-glass {
             background: var(--panel);
             backdrop-filter: blur(20px) saturate(180%);
@@ -52,7 +48,6 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        /* Phone Decor (iPhone Style) */
         .phone-notch {
             display: none;
             position: absolute;
@@ -65,7 +60,6 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             z-index: 20;
         }
 
-        /* Desktop Browser Header (Safari Style) */
         .browser-header {
             display: none;
             height: 38px;
@@ -77,7 +71,6 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
         }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
 
-        /* Botões de Tab */
         .tab-btn { 
             position: relative; 
             transition: all 0.2s ease; 
@@ -95,7 +88,6 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             border-radius: 2px; 
         }
 
-        /* Botões de Ação */
         .btn-apple {
             background: #ffffff;
             border: 1px solid #d2d2d7;
@@ -113,12 +105,6 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
         }
         .btn-primary-apple:hover { opacity: 0.9; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #d2d2d7; border-radius: 10px; border: 2px solid var(--bg); }
-
-        /* Auth Screen Apple Style */
         #auth-overlay {
             position: fixed;
             inset: 0;
@@ -129,10 +115,7 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             justify-content: center;
             transition: all 0.5s ease-in-out;
         }
-        .auth-card {
-            width: 320px;
-            text-align: center;
-        }
+        .auth-card { width: 320px; text-align: center; }
         .auth-input {
             width: 100%;
             background: #f5f5f7;
@@ -145,15 +128,14 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             margin: 24px 0;
             outline: none;
         }
-        .auth-input:focus { border-color: var(--accent); ring: 2px var(--accent); }
 
-        /* NOVO: CSS do Paywall sem afetar o layout principal */
-        #pay-banner {
+        /* Estilo do Banner de Upgrade */
+        .premium-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(15px);
             z-index: 10000;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(15px);
             display: none;
             align-items: center;
             justify-content: center;
@@ -162,18 +144,6 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
 </head>
 <body class="flex flex-col">
 
-    <div id="pay-banner">
-        <div class="apple-glass p-10 rounded-[40px] border border-gray-200 text-center max-w-xs shadow-2xl">
-            <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 256 256" fill="white"><path d="M224,128v80a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V128a16,16,0,0,1,16-16H80a8,8,0,0,1,0,16H48v80H208V128H176a8,8,0,0,1,0-16h32A16,16,0,0,1,224,128ZM122.34,34.34a8,8,0,0,0-11.32,0l-40,40a8,8,0,0,0,11.32,11.32L112,56.63V160a8,8,0,0,0,16,0V56.63l29.66,29.03a8,8,0,0,0,11.32-11.32Z"></path></svg>
-            </div>
-            <h2 class="text-xl font-bold text-black">Acesso Premium</h2>
-            <p class="text-gray-500 text-xs mt-2 mb-8">A exportação de arquivos é exclusiva para usuários Pro.</p>
-            <button onclick="window.open('https://wnet.link/comprar', '_blank')" class="w-full py-3 btn-primary-apple font-semibold">Desbloquear Versão Paga</button>
-            <button onclick="document.getElementById('pay-banner').style.display='none'" class="w-full py-3 text-xs text-gray-400">Voltar para o editor</button>
-        </div>
-    </div>
-
     <div id="auth-overlay">
         <div class="auth-card">
             <div class="w-20 h-20 bg-black rounded-[22%] mx-auto mb-8 flex items-center justify-center shadow-xl">
@@ -181,11 +151,23 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             </div>
             <h2 class="text-black font-semibold text-2xl tracking-tight">Iniciar Sessão</h2>
             <p class="text-gray-500 text-sm mt-1">Digite a senha de Acesso</p>
-            
             <input type="password" id="passInput" class="auth-input" placeholder="Senha" maxlength="20">
-            
             <button onclick="validateAuth()" class="w-full py-3 btn-primary-apple font-medium">Entrar</button>
             <p id="error-msg" class="text-red-500 text-xs mt-4 opacity-0">Senha incorreta. Tente novamente.</p>
+        </div>
+    </div>
+
+    <div id="premium-banner" class="premium-overlay">
+        <div class="apple-glass p-10 rounded-[32px] text-center max-w-sm border border-white/50 shadow-2xl">
+            <div class="w-16 h-16 bg-blue-500 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg">
+                <svg width="32" height="32" viewBox="0 0 256 256" fill="white"><path d="M224,56V200a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V56A16,16,0,0,1,48,40H208A16,16,0,0,1,224,56Z" opacity="0.2"></path><path d="M208,32H48A24,24,0,0,0,24,56V200a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V56A24,24,0,0,0,208,32Zm8,168a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8Z"></path></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-black mb-2">Limite Atingido</h3>
+            <p class="text-gray-500 text-sm mb-8">Você atingiu o limite de 3 exportações gratuitas. Adquira a versão Pro para exportações ilimitadas.</p>
+            <div class="flex flex-col gap-3">
+                <button onclick="alert('Redirecionando para pagamento...')" class="w-full py-3 btn-primary-apple font-semibold">Obter Versão Pro</button>
+                <button onclick="closeBanner()" class="w-full py-3 text-sm font-medium text-gray-500 hover:text-black transition-colors">Voltar ao Editor</button>
+            </div>
         </div>
     </div>
 
@@ -197,14 +179,12 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
                 </div>
                 <h1 class="text-sm font-semibold tracking-tight text-black">WNET<span class="font-normal opacity-50">Studio</span></h1>
             </div>
-            
             <nav class="flex gap-8 items-center pt-1">
                 <button onclick="switchTab('html')" id="tab-html" class="tab-btn active uppercase tracking-wider">HTML</button>
                 <button onclick="switchTab('css')" id="tab-css" class="tab-btn uppercase tracking-wider">CSS</button>
                 <button onclick="switchTab('javascript')" id="tab-js" class="tab-btn uppercase tracking-wider">JS</button>
             </nav>
         </div>
-
         <div class="flex items-center gap-3">
             <button onclick="selectAllCode()" class="text-xs font-medium px-4 py-2 btn-apple">Selecionar</button>
             <button onclick="clearAll()" class="text-xs font-medium px-4 py-2 text-red-500 hover:bg-red-50 rounded-lg transition-all">Limpar</button>
@@ -252,7 +232,8 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
     </main>
 
     <script>
-        // Lógica de Autenticação Original
+        let exportCount = 0; // Contador de exportações
+
         function validateAuth() {
             const input = document.getElementById('passInput');
             const error = document.getElementById('error-msg');
@@ -276,10 +257,9 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
         }
         document.getElementById('passInput').addEventListener('keydown', (e) => { if(e.key === 'Enter') validateAuth(); });
 
-        // Lógica do Sistema Original
         let editor, currentLang = 'html';
         let files = {
-            html: localStorage.getItem('wnet-html') || '<div class="container">\n  <h1>Design Inicial de WnetStudio</h1>\n  <p>Minimalismo e clareza.</p>\n  <button id="btn">Explorar</button>\n</div>',
+            html: localStorage.getItem('wnet-html') || '<div class="container">\n  <h1>WnetStudio</h1>\n  <p>Design Minimalista.</p>\n  <button id="btn">Explorar</button>\n</div>',
             css: localStorage.getItem('wnet-css') || 'body { background: #fff; color: #1d1d1f; height: 100vh; display: flex; align-items: center; justify-content: center; font-family: -apple-system, sans-serif; margin: 0; }\n.container { text-align: center; border: 1px solid #d2d2d7; padding: 3rem; border-radius: 30px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }\nbutton { background: #007aff; color: #fff; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 500; cursor: pointer; margin-top: 20px; transition: 0.2s; }\nbutton:hover { opacity: 0.8; }',
             javascript: localStorage.getItem('wnet-js') || 'document.getElementById("btn").onclick = () => {\n  alert("Olá do ecossistema Wnet!");\n};'
         };
@@ -332,6 +312,27 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             }
         }
 
+        // Lógica de Exportação com Bloqueio
+        async function downloadBundle() {
+            if (exportCount >= 3) {
+                document.getElementById('premium-banner').style.display = 'flex';
+                return;
+            }
+
+            const content = `<!DOCTYPE html><html><head><style>${files.css}</style></head><body>${files.html}<script>${files.javascript}<\/script></body></html>`;
+            const a = document.createElement('a'); 
+            a.href = URL.createObjectURL(new Blob([content], {type: 'text/html'})); 
+            a.download = 'projeto_apple.html'; 
+            a.click();
+
+            exportCount++;
+            console.log(`Exportações: ${exportCount}/3`);
+        }
+
+        function closeBanner() {
+            document.getElementById('premium-banner').style.display = 'none';
+        }
+
         function toggleFullscreen() {
             const iframe = document.getElementById('preview');
             if (iframe.requestFullscreen) iframe.requestFullscreen();
@@ -339,8 +340,8 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
         }
 
         function selectAllCode() { if (editor) { editor.focus(); editor.setSelection(editor.getModel().getFullModelRange()); } }
-        function clearAll() { if(confirm("Deseja limpar todo o código?")) { files.html = ""; files.css = ""; files.javascript = ""; editor.setValue(""); updatePreview(); } }
-        function saveToLocal() { localStorage.setItem('wnet-html', files.html); localStorage.setItem('wnet-css', files.css); localStorage.setItem('wnet-js', files.javascript); alert("Alterações salvas no navegador."); }
+        function clearAll() { if(confirm("Limpar todo o código?")) { files.html = ""; files.css = ""; files.javascript = ""; editor.setValue(""); updatePreview(); } }
+        function saveToLocal() { localStorage.setItem('wnet-html', files.html); localStorage.setItem('wnet-css', files.css); localStorage.setItem('wnet-js', files.javascript); alert("Salvo no navegador."); }
         function importFile() { document.getElementById('fileInput').click(); }
         function handleImport(event) {
             const reader = new FileReader();
@@ -353,13 +354,6 @@ button:hover { opacity: 0.8; }</style></head><body><!DOCTYPE html>
             };
             reader.readAsText(event.target.files[0]);
         }
-
-        // ALTERAÇÃO APENAS AQUI: TRAVA DE DOWNLOAD
-        async function downloadBundle() {
-            document.getElementById('pay-banner').style.display = 'flex';
-        }
     </script>
 </body>
-</html><script>document.getElementById("btn").onclick = () => {
-  alert("Olá do ecossistema Wnet!");
-};</script></body></html>
+</html>
